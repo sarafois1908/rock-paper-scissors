@@ -13,7 +13,7 @@ pipeline {
   }
   stage('Build') {
     steps {
-      dir("/opt/jenkins/spring-petclinic") {
+      dir("/opt/jenkins/rock-paper-scissors") {
         sh 'mvn -B -DskipTests clean package'
         }
       }
