@@ -1,0 +1,20 @@
+---
+- name: deploy file .jar
+  hosts: 
+
+  tasks: 
+    - name: get file in the target host
+      get_url: 
+        url:   http://172.29.16.32:8081/repository/{{ repo_name }}/{{ artifact_name }}
+        dest: /temp/{{ artifact_name }}
+        mode: '0777'
+    
+    - name: deploy file
+      shell: 
+        chdir: /temp/
+        cmd: webappct deploy {{ project }} {{ artifact_name }}
+
+    - name: remove downloaded file
+      file: 
+        path: /temp/{{ artifact_name }}
+        state: absent

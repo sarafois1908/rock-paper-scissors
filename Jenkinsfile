@@ -40,6 +40,11 @@ pipeline {
 				}	
 			}
 		}
+		//stage ('Ansible'){
+		//	steps{
+
+		//	}
+		//}
 	}
 } 
 
