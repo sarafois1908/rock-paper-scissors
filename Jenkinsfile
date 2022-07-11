@@ -24,8 +24,6 @@ pipeline {
 					//def artifact_name = sh script: 'find . -type f -name "*.jar" | head -n 1', returnStdout: true
 					sh script: "find . -type f -name '*.jar' | head -n 1 > result"
 				}
-			}	
-			steps{
 				def artifact_name = readFile('result').split("\r?\n")
 			}
 		}
