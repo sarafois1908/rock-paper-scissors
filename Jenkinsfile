@@ -23,7 +23,7 @@ pipeline {
 				script{
 					dir("/opt/jenkins/rock-paper-scissors/target"){
 						//def artifact_name = sh script: 'find . -type f -name "*.jar" | head -n 1', returnStdout: true
-						sh script: "find . -type f -name '*.jar' | head -n 1 | cut -c 3- | rev | cut -c 1-|rev > result"
+						sh script: "find . -type f -name '*.jar' | head -n 1 | cut -c 3- | rev | cut -c 1-| rev | tr -d '\n' > result"
 					}	
 				}
 				script{
@@ -35,8 +35,7 @@ pipeline {
 			steps{
 				dir("/opt/jenkins/rock-paper-scissors/target"){
 					withCredentials([usernamePassword(credentialsId: 'cf6a9544-f46a-44d6-a9e1-33f8c9c02b6c', passwordVariable: 'password_nexus', usernameVariable: 'username_nexus')]) {
-						sh "curl -v -u \${username_nexus}:\${password_nexus} --upload-file \${artifact_name} http://172.29.16.32:8081/repository/M-PRV/${artifact_name}"
-					//echo "$artifact_name"
+						sh ("curl -v -u \$username_nexus:\$password_nexus --upload-file ${artifact_name} http://172.29.16.32:8081/repository/M-PRV/${artifact_name}")
 					}
 				}	
 			}
