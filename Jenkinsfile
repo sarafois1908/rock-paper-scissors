@@ -33,9 +33,10 @@ pipeline {
 				script{
 					def artifact_name = readFile('/opt/jenkins/rock-paper-scissors/target/result').split("\r?\n")
 				}
-				withCredentials([usernamePassword(credentialsId: 'cf6a9544-f46a-44d6-a9e1-33f8c9c02b6c', passwordVariable: 'nexus_password', usernameVariable: 'nexus_user')]) {
-						sh "curl -v -u $nexus_user:$nexus_password --upload-file $artifact_name http://172.29.16.32:8081/repository/M-PRV/$artifact_name"
-				}
+				//withCredentials([usernamePassword(credentialsId: 'cf6a9544-f46a-44d6-a9e1-33f8c9c02b6c', passwordVariable: 'nexus_password', usernameVariable: 'nexus_user')]) {
+				//		sh "curl -v -u $nexus_user:$nexus_password --upload-file $artifact_name http://172.29.16.32:8081/repository/M-PRV/$artifact_name"
+				//}
+				echo "$artifact_name"
 			}
 		}
 	}
