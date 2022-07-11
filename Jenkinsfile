@@ -23,11 +23,11 @@ pipeline {
 				script{
 					dir("/opt/jenkins/rock-paper-scissors/target"){
 						//def artifact_name = sh script: 'find . -type f -name "*.jar" | head -n 1', returnStdout: true
-						sh script: "find . -type f -name '*.jar' | head -n 1 > result"
+						sh script: "find . -type f -name '*.jar' | head -n 1 | cut -c 4- | rev | cut -c 2-|rev > result"
 					}	
 				}
 				script{
-					artifact_name = readFile('/opt/jenkins/rock-paper-scissors/target/result').split("\r?\n")
+					artifact_name = readFile('/opt/jenkins/rock-paper-scissors/target/result') 
 				}
 			}
 		}
