@@ -26,7 +26,7 @@ pipeline {
 						sh script: "find . -type f -name '*.jar' | head -n 1 > result"
 					}
 					dir("/opt/jenkins/rock-paper-scissors/target"){
-						def artifact_name = readFile('result').split("\r?\n")
+						def artifact_name = readFile('/opt/jenkins/rock-paper-scissors/target/result').split("\r?\n")
 					}
 					
 				}
