@@ -13,7 +13,7 @@
     - name: deploy file
       shell: 
         chdir: /temp/
-        cmd: echo "webappct deploy {{ project }} {{ artifact_name }}"
+        cmd: echo "webappct deploy {{ project }} {{ artifact_name }}" > /temp/output
 
     - name: remove downloaded file
       file: 
