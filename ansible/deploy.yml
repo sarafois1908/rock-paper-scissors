@@ -1,6 +1,6 @@
 ---
 - name: deploy file .jar
-  hosts: "{{ repo_name }}"
+  hosts: M-ROS
 
 
   tasks: 
