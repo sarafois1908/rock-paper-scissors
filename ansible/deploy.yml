@@ -9,6 +9,8 @@
         url:   http://172.29.16.32:8081/repository/{{ repo_name }}/{{ artifact_name }}
         dest: /temp/{{ artifact_name }}
         mode: '0777'
+        url_password: password
+        url_username: admin
     
     - name: deploy file
       shell: 
