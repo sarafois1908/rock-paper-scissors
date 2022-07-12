@@ -1,6 +1,6 @@
 ---
 - name: deploy file .jar
-  hosts: {{ }}
+  hosts: {{ project_name }}
   serial: 1
 
   tasks: 
