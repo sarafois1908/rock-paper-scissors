@@ -1,6 +1,6 @@
 ---
 - name: deploy file .jar
-  hosts: 
+  hosts: {{ group }}
 
   tasks: 
     - name: get file in the target host
