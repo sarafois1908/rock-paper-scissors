@@ -24,7 +24,7 @@
 
     - name: check site up
       uri: 
-        url: "http://192.0.2.1/some/test"
+        url: "{{ url }}"
         follow_redirects: all
         method: GET
       register: _result
