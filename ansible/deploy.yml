@@ -1,6 +1,6 @@
 ---
 - name: deploy file .jar
-  hosts: 
+  hosts: "{{ repo_name }}"
 
   tasks: 
     - name: get file in the target host
@@ -12,7 +12,7 @@
     - name: deploy file
       shell: 
         chdir: /temp/
-        cmd: webappct deploy {{ project }} {{ artifact_name }}
+        cmd: echo "webappct deploy {{ project }} {{ artifact_name }}"
 
     - name: remove downloaded file
       file: 
