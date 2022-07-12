@@ -2,6 +2,7 @@
 - name: deploy file .jar
   hosts: "{{ repo_name }}"
 
+
   tasks: 
     - name: get file in the target host
       get_url: 
