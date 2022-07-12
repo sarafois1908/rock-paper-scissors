@@ -25,7 +25,7 @@
     - name: check site up
       uri: 
         url: "{{ url }}"
-        follow_redirects: all
+        follow_redirects: none
         method: GET
       register: _result
       until: _result.status == 200
