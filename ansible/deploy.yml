@@ -22,12 +22,17 @@
         path: /temp/{{ artifact_name }}
         state: absent
 
-    - name: check site up
-      uri: 
-        url: "{{ url }}"
-        follow_redirects: none
-        method: GET
-      register: _result
-      until: _result.status == 200
-      retries: 60  # 60 * 2 seconds = 2minutes 
-      delay: 2 # Every 2 second
+    #- name: check site up
+    #  uri: 
+    #    url: "{{ url }}"
+    #    follow_redirects: none
+    #    method: GET
+    #  register: _result
+    #  until: _result.status == 200
+    #  retries: 60  # 60 * 2 seconds = 2minutes 
+    #  delay: 2 # Every 2 second
+
+    - name: check url
+      shell: 
+        chdir: /temp/
+        cmd: echo "{{ url }}" > /temp/url
