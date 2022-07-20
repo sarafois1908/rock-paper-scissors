@@ -52,10 +52,10 @@ pipeline {
 					try {
 						ansibleTower(
 							extraVars: """---
-								artifact_name: "${artifact_name}"
-								project_name: "${project_name}"
-								repo_name: "${repo_name}"
-								""",
+						artifact_name: "${artifact_name}"
+						project_name: "${project_name}"
+						repo_name: "${repo_name}"
+						""",
 							jobTemplate: 'Deploy Jenkins',
 							jobType: 'run',
 							throwExceptionWhenFail: false,
