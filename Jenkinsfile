@@ -46,23 +46,32 @@ pipeline {
 				}	
 			}
 		}
-		stage ('Ansible'){
-			steps{
-				ansibleTower(
-					extraVars: """---
-                        artifact_name: "${artifact_name}"
-                        project_name: "${project_name}"
-                        repo_name: "${repo_name}"
-                        """,
-					jobTemplate: 'Deploy Jenkins',
-					jobType: 'run',
-					throwExceptionWhenFail: false,
-					towerCredentialsId: 'f3330343-d0b8-4e32-9d51-6883f312b1ad',
-					towerLogLevel: 'false',
-					towerServer: 'Ansible - POC'
-				)
+		try{
+			stage ('Ansible'){
+				steps{
+					ansibleTower(
+						extraVars: """---
+							artifact_name: "${artifact_name}"
+							project_name: "${project_name}"
+							repo_name: "${repo_name}"
+							""",
+						jobTemplate: 'Deploy Jenkins',
+						jobType: 'run',
+						throwExceptionWhenFail: false,
+						towerCredentialsId: 'f3330343-d0b8-4e32-9d51-6883f312b1ad',
+						towerLogLevel: 'false',
+						towerServer: 'Ansible - POC'
+					)
+				}
+		}
+		} catch (Exception e) {
+			stage('Rollback'){
+				steps{
+					echo 'culo'
+				}
 			}
 		}
+		
 	}
 } 
 
