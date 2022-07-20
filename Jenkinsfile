@@ -47,8 +47,8 @@ pipeline {
 			}
 		}
 		stage ('Ansible'){
-			try {
-				steps{
+			steps{
+				try {
 					ansibleTower(
 						extraVars: """---
 							artifact_name: "${artifact_name}"
@@ -62,14 +62,10 @@ pipeline {
 						towerLogLevel: 'false',
 						towerServer: 'Ansible - POC'
 					)
+				}catch (Exception e) {
+					echo 'culo'
 				}
-			}catch (Exception e) {
-				stage('Rollback'){
-					steps{
-						echo 'culo'
-					}
-				}
-			} 
+			}
 		}
 		
 	}
