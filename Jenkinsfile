@@ -56,7 +56,7 @@ pipeline {
                         """,
 					jobTemplate: 'Deploy Jenkins',
 					jobType: 'run',
-					throwExceptionWhenFail: false,
+					throwExceptionWhenFail: true,
 					towerCredentialsId: 'f3330343-d0b8-4e32-9d51-6883f312b1ad',
 					towerLogLevel: 'false',
 					towerServer: 'Ansible - POC'
