@@ -47,7 +47,7 @@ pipeline {
 			}
 		}
 		stage ('Ansible'){
-			//steps{
+			script{
 				try {
 					ansibleTower(
 						extraVars: """---
@@ -65,7 +65,7 @@ pipeline {
 				}catch (Exception e) {
 					echo 'culo'
 				}
-		//	}
+			}
 		}
 		
 	}
