@@ -46,8 +46,8 @@ pipeline {
 				}	
 			}
 		}
-		try{
-			stage ('Ansible'){
+		stage ('Ansible'){
+			try {
 				steps{
 					ansibleTower(
 						extraVars: """---
@@ -63,13 +63,13 @@ pipeline {
 						towerServer: 'Ansible - POC'
 					)
 				}
-		}
-		} catch (Exception e) {
-			stage('Rollback'){
-				steps{
-					echo 'culo'
+			}catch (Exception e) {
+				stage('Rollback'){
+					steps{
+						echo 'culo'
+					}
 				}
-			}
+			} 
 		}
 		
 	}
