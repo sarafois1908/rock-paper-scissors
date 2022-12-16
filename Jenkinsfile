@@ -56,12 +56,12 @@ pipeline {
                     		subject: "[Jenkins]${currentBuild.fullDisplayName}",
 				to: "s.fois@vargroup.it",
 				body: '''<a href="${BUILD_URL}input">click to approve</a>'''
-			
-		  	  input {
+			}
+		  	input {
 				message "Should we continue?"
 				ok "Yes"
 		  	  }
-		   	 steps {
+		   	steps {
 				sh "echo 'describe your deployment' "
 		  	  }
 		//}
