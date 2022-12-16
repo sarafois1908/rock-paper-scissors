@@ -51,18 +51,19 @@ pipeline {
 		
 		
 		stage('deploy') {
-		    emailext mimeType: 'text/html',
-                    subject: "[Jenkins]${currentBuild.fullDisplayName}",
-                    to: "s.fois@vargroup.it",
-                    body: '''<a href="${BUILD_URL}input">click to approve</a>'''
+			steps {
+				emailext mimeType: 'text/html',
+                    		subject: "[Jenkins]${currentBuild.fullDisplayName}",
+				to: "s.fois@vargroup.it",
+				body: '''<a href="${BUILD_URL}input">click to approve</a>'''
 			
-		    input {
-			message "Should we continue?"
-			ok "Yes"
-		    }
-		    steps {
-			sh "echo 'describe your deployment' "
-		    }
+		  	  input {
+				message "Should we continue?"
+				ok "Yes"
+		  	  }
+		   	 steps {
+				sh "echo 'describe your deployment' "
+		  	  }
 		//}
 		
 		
