@@ -28,8 +28,10 @@ pipeline {
 				}*/
 				script{
 					//artifact_name = readFile('/opt/jenkins/rock-paper-scissors/target/result') 
-					println artifact_name
-					project_name = artifact_name.substring(0, 3)
+					def artifact_name
+					def pr
+					//project_name = artifact_name.substring(0, 3)
+					project_name = repo_name.reverse().take(3).reverse().toLowerCase() 
 					println project_name
 					//repo_name= "M-" + project_name.toUpperCase()
 					println repo_name
