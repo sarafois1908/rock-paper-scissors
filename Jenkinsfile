@@ -48,7 +48,24 @@ pipeline {
 				}	
 			}
 		}*/
-		stage ('Ansible'){
+		
+		emailext mimeType: 'text/html',
+                 subject: "[Jenkins]${currentBuild.fullDisplayName}",
+                 to: "s.fois@vargroup.it",
+                 body: '''<a href="${BUILD_URL}input">click to approve</a>'''
+		
+		stage('deploy') {
+		    input {
+			message "Should we continue?"
+			ok "Yes"
+		    }
+		    steps {
+			sh "echo 'describe your deployment' "
+		    }
+		//}
+		
+		
+		//stage ('Ansible'){
 			steps{
 				script {
 					try {
